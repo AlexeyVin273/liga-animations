@@ -1,10 +1,37 @@
 mixin intro()
+  -
+    const navItems = [
+      {
+        text: "Меню",
+        href: "#",
+      },
+      {
+        text: "Лоадер",
+        href: "#",
+      },
+      {
+        text: "Сборка первого экрана",
+        href: "#",
+      },
+      {
+        text: "Появление блоков",
+        href: "#",
+      },
+      {
+        text: "Параллакс",
+        href: "#",
+      },
+      {
+        text: "Слайдер по скроллу",
+        href: "#",
+      },
+    ];
   .intro
-    //- вставлять блоки во внешний контейнер неверно
-    //- все блоки содержат в себе container без доп класса tutorial__wrapper
     .container
-      p(style="margin-top: 40px;") Текст&nbsp;с&nbsp;мнемониками
-
-      p(style="margin-top: 40px;") Пример использования +img()
-      p(style="margin-bottom: 40px;")
-        +img("content", "placeholder", "png", 120, 120, "Пример")
+      .intro__header
+        h1.intro__title Задачки на прокачку
+        p.intro__text Задачи на интерфейсную логику, которые часто встречаются на реальных проектах
+      ul.intro__nav-list
+        each item in navItems
+          li.intro__nav-item
+            a(href=item.href).intro__nav-link!= item.text

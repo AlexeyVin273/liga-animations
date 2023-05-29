@@ -2,30 +2,37 @@ mixin header(headerMods, currentUrl)
   -
     const headerLinks = [
       {
-        href: "index.html",
-        text: "Главная"
+        href: "map-1.html",
+        text: "Карта 1"
       },
       {
-        href: "#",
-        text: "Страница 2"
+        href: "map-2.html",
+        text: "Карта 2"
       },
       {
-        href: "#",
-        text: "Страница 3"
+        href: "map-3.html",
+        text: "Карта 3"
+      },
+      {
+        href: "map-4.html",
+        text: "Карта 4"
       },
     ]
 
-  header.header(class=headerMods)
+  header.header(class=headerMods, data-fix-block)
     .container
       if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
+        span.header__logo
+          +icon("logo", "362", "67")
       else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
+        a.header__logo(href="index.html", aria-label="Переход на главную")
+          +icon("logo", "362", "67")
+      button.header__toggle(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
+    nav.main-nav(data-fix-block)
+      .container
         .main-nav__wrapper
+          .main-nav__title-wrapper
+            h2.main-nav__title Анимации
           ul.main-nav__list
             each link in headerLinks
               - const activeState = currentUrl === link.href
