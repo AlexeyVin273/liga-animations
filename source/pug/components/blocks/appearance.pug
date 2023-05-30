@@ -1,0 +1,31 @@
+mixin appearance()
+  -
+    const items = [
+      {
+        effect: "fade"
+      },
+      {
+        effect: "fade"
+      },
+      {
+        effect: "fade-in"
+      },
+      {
+        effect: "fade-in"
+      },
+      {
+        effect: "fade-scale"
+      },
+      {
+        effect: "fade-scale"
+      },
+    ];
+  section(id="appearance").appearance
+    .container
+      .content-block
+        h2 Появление блоков
+        p доскролили и вжух!
+        p Можно делать через классы и высчитывать по скроллу getBoundingClientRect каждого блока, но гораздо проще использовать ScrollTrigger.batch()
+        ul
+          each item in items
+            li(data-appearance=item.effect)!= item.effect

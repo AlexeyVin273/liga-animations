@@ -1,0 +1,26 @@
+mixin parallax()
+  -
+    const items = [
+      {
+        effect: "fade-scale"
+      },
+      {
+        effect: "fade-scale"
+      },
+      {
+        effect: "transform y"
+      },
+      {
+        effect: "transform y"
+      },
+    ];
+  section(id="parallax").parallax
+    .container
+      .content-block
+        h2 Параллакс по скроллу
+        p Эффекты, которые постоянно срабатывают по скроллу
+          br
+        | Скроллим скроллим и вжух вжух вжух!
+        ul
+          each item in items
+            li(data-appearance=item.effect)!= item.effect

@@ -15,6 +15,7 @@
 @import "global/reboot";
 @import "global/utils";
 @import "global/container";
+@import "vendor/splitting";
 
 // Blocks
 // ---------------------------------
@@ -27,6 +28,14 @@
 @import "blocks/custom-input";
 @import "blocks/custom-toggle";
 @import "blocks/custom-select";
+@import "blocks/intro";
+@import "blocks/menu";
+@import "blocks/loader";
+@import "blocks/build";
+@import "blocks/appearance";
+@import "blocks/parallax";
+@import "blocks/scroll-slider";
+@import "blocks/content-block";
 
 // ---------------------------------
 

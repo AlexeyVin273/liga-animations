@@ -3,35 +3,38 @@ mixin intro()
     const navItems = [
       {
         text: "Меню",
-        href: "#",
+        href: "#menu",
       },
       {
         text: "Лоадер",
-        href: "#",
+        href: "#loader",
       },
       {
         text: "Сборка первого экрана",
-        href: "#",
+        href: "#build",
       },
       {
         text: "Появление блоков",
-        href: "#",
+        href: "#appearance",
       },
       {
         text: "Параллакс",
-        href: "#",
+        href: "#parallax",
       },
       {
         text: "Слайдер по скроллу",
-        href: "#",
+        href: "#scroll-slider",
       },
     ];
   .intro
     .container
       .intro__header
-        h1.intro__title Задачки на прокачку
-        p.intro__text Задачи на интерфейсную логику, которые часто встречаются на реальных проектах
+        h1(data-splitting).intro__title Задачки #[span.no-wrap на&nbsp;прокачку]
+        p(data-splitting-words).intro__text Задачи #[span.no-wrap на&nbsp;интерфейсную] логику, которые часто встречаются #[span.no-wrap на&nbsp;реальных] проектах
       ul.intro__nav-list
         each item in navItems
           li.intro__nav-item
-            a(href=item.href).intro__nav-link!= item.text
+            a(href=item.href, data-move-to=item.href).intro__nav-link!= item.text
+    .intro__bg
+      video(width="1920" height="1080" autoplay loop playsinline muted)
+        source(src="./media/background-wave.mp4" type="video/mp4")

@@ -1,5 +1,7 @@
 import {iosVhFix} from './utils/ios-vh-fix';
 import {initHeader} from './modules/header';
+import {initIntro} from './modules/intro';
+import {initAnimations} from './modules/animation/animation';
 
 // ---------------------------------
 
@@ -10,6 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   iosVhFix();
   initHeader();
+  initIntro();
+  initAnimations();
 
   // Modules
   // ---------------------------------
