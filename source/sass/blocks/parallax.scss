@@ -3,6 +3,29 @@
   padding: 90px 0 200px;
 
   background-color: $color-default-white;
+  overflow: hidden;
 
   z-index: 0;
+
+  .card[data-parallax="fade-scale"] {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+  }
+
+  li:nth-child(n+3) .card {
+    transform: translate3d(0, 50px, 0);
+  }
+
+  li:nth-child(n+4) .card {
+    transform: translate3d(0, -50px, 0);
+  }
+
+  li:nth-child(n+5) .card {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  li:nth-child(n+6) .card {
+    transform: translate3d(100%, 0, 0);
+  }
 }

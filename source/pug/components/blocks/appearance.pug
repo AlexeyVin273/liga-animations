@@ -28,4 +28,5 @@ mixin appearance()
         p Можно делать через классы и высчитывать по скроллу getBoundingClientRect каждого блока, но гораздо проще использовать ScrollTrigger.batch()
         ul
           each item in items
-            li(data-appearance=item.effect)!= item.effect
+            li
+              .card(data-appearance=item.effect)!= item.effect

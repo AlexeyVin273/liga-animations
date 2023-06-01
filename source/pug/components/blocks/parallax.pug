@@ -13,6 +13,12 @@ mixin parallax()
       {
         effect: "transform y"
       },
+      {
+        effect: "transform x"
+      },
+      {
+        effect: "transform x"
+      },
     ];
   section(id="parallax").parallax
     .container
@@ -23,4 +29,5 @@ mixin parallax()
         | Скроллим скроллим и вжух вжух вжух!
         ul
           each item in items
-            li(data-appearance=item.effect)!= item.effect
+            li
+              .card(data-parallax=item.effect)!= item.effect
