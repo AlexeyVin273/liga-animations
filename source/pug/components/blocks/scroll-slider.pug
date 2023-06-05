@@ -1,3 +1,38 @@
 mixin scroll-slider()
+  -
+    const slides = [
+      {
+        title: "Scroll Slider",
+        text: "переключение полноэкранных слайдов по&nbsp;скроллу",
+        background: "architect-bg.svg",
+      },
+      {
+        title: "position: sticky;",
+        text: "Просто стики. Не&nbsp;нужно мучаться с&nbsp;position: fixed; или pin: true,<br>(т.к. баги на&nbsp;тач неисправимы)",
+        background: "squares-bg.svg",
+      },
+      {
+        title: "gsap scrollTrigger",
+        text: "без getBoundingClientRect<br>ScrollTrigger делает всю рутину за&nbsp;нас",
+        background: "plus-bg.svg",
+      },
+      {
+        title: "ios friendly???",
+        text: "не&nbsp;забывайте добавлять вокруг transform: translate3d(0, 0, 0);",
+        background: "graph-paper-bg.svg",
+      },
+    ];
+
   section(id="scroll-slider").scroll-slider
-    h2.visually-hidden Сколл слайдер
+    h2.visually-hidden Скролл слайдер
+    .scroll-slider__slides
+      each slide in slides
+        .scroll-slider__slide
+          .container
+            .content-block
+              h2!= slide.title
+              p!= slide.text
+          .scroll-slider__slide-bg(style=`background-image: url('./img/svg/${slide.background}')`)
+
+
+
