@@ -10,7 +10,7 @@ const initParallax = () => {
     scrollTrigger: {
       trigger: '.parallax ul',
       start: 'top 90%',
-      end: 'top 30%',
+      end: 'top 50%',
       scrub: 1,
     },
     ease: 'power1.inOut',
@@ -23,7 +23,7 @@ const initParallax = () => {
     scrollTrigger: {
       trigger: '.parallax ul',
       start: 'top 90%',
-      end: 'top 30%',
+      end: 'top 50%',
       scrub: 1,
     },
     ease: 'power1.inOut',

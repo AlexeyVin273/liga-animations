@@ -1,4 +1,8 @@
 import {ScrollLock} from '../utils/scroll-lock';
+// import {gsap} from '../vendor/gsap.min.js';
+// import {ScrollTrigger} from '../vendor/ScrollTrigger.min.js';
+
+// gsap.registerPlugin(ScrollTrigger);
 
 const setHeaderHeight = () => {
   const headerEl = document.querySelector('.header');
@@ -19,6 +23,14 @@ const initHeader = () => {
   }
 
   const scrollLock = new ScrollLock();
+
+  // ScrollTrigger.create({
+  //   trigger: headerEl,
+  //   start: 'top top',
+  //   end: 'top top',
+  //   toggleClass: 'active-bg',
+  //   markers: true,
+  // });
 
   const menuToggle = headerEl.querySelector('.header__toggle');
   const mainNav = headerEl.querySelector('.main-nav');

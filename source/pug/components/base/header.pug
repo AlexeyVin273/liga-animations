@@ -30,9 +30,9 @@ mixin header(headerMods, currentUrl)
       button.header__toggle(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
     nav.main-nav(data-fix-block)
       .container
-        .main-nav__wrapper
-          .main-nav__title-wrapper
-            h2.main-nav__title Анимации
+        .main-nav__title-wrapper
+          h2.main-nav__title Анимации
+        .main-nav__list-wrapper
           ul.main-nav__list
             each link in headerLinks
               - const activeState = currentUrl === link.href

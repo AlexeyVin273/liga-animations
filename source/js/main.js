@@ -2,6 +2,7 @@ import {iosVhFix} from './utils/ios-vh-fix';
 import {initHeader} from './modules/header';
 import {initIntro} from './modules/intro';
 import {initAnimations} from './modules/animation/animation';
+import {hidePreloader} from './modules/preloader';
 
 // ---------------------------------
 
@@ -12,7 +13,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   iosVhFix();
   initHeader();
-  initIntro();
   initAnimations();
 
   // Modules
@@ -21,7 +21,9 @@ window.addEventListener('DOMContentLoaded', () => {
   // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
   // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
-
+    setTimeout(() => {
+      hidePreloader(initIntro);
+    }, 2000);
   });
 });
 

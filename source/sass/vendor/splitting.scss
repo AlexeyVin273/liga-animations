@@ -65,12 +65,12 @@
   --distance-percent: calc((var(--distance) / var(--char-center)));
 }
 
-.splitting .char {
+.is-shown .splitting .char {
   animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
   animation-delay: calc(40ms * var(--char-index));
 }
 
-.splitting .word {
+.is-shown .splitting .word {
   animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
   animation-delay: calc(40ms * var(--char-index));
 }

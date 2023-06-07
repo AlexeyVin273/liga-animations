@@ -19,7 +19,7 @@ html(lang="ru")
     link(rel="preload", href="fonts/inter-medium.woff2", as="font", crossorigin="anonymous")
     link(rel="stylesheet", href="css/style.min.css")
 
-  body
+  body(class={"scroll-lock-ios": preloading})
     +sprite()
     .wrapper(class=wrapperMods)
       if (hasHeader)

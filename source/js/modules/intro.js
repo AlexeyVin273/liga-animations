@@ -1,4 +1,7 @@
 import {gsap} from '../vendor/gsap.min.js';
+import {ScrollToPlugin} from '../vendor/ScrollToPlugin.min';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const initIntro = () => {
   const introEl = document.querySelector('.intro');
@@ -7,13 +10,12 @@ const initIntro = () => {
     return;
   }
 
-  const moveTo = new window.MoveTo();
-
   const navItems = introEl.querySelectorAll('.intro__nav-item');
   gsap.to(navItems, {
     scale: 1,
     duration: 0.8,
     stagger: 0.05,
+    delay: 0.5,
     ease: 'power4.out',
   });
 
@@ -29,12 +31,7 @@ const initIntro = () => {
 
     const block = document.querySelector(`${link.getAttribute('data-move-to')}`);
     if (block) {
-      moveTo.move(block, {
-        tolerance: 0,
-        duration: 800,
-        easing: 'easeOutQuart',
-        container: window,
-      });
+      gsap.to(window, {duration: 1, scrollTo: block});
     }
   });
 };

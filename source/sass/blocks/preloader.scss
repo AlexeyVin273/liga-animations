@@ -1,0 +1,67 @@
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+
+  background: $color-persian-blue;
+  background: linear-gradient(125deg, $color-persian-blue 0%, $color-navy 31%, $color-sherpa-blue 88%);
+  clip-path: polygon(100% 0, 100% 100%, 153% 100%, 0 152%, 0 0);
+  transition: clip-path $trans-600;
+
+  z-index: 1000;
+
+  &__image {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2vw;
+
+    animation-name: preload-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.35, 0.8, 0.165, 1);
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  &__element {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background-color: $color-default-white;
+  }
+
+  &.is-hidden {
+    clip-path: polygon(100% 0, 100% 0, 100% 0, 120% 0, 0 0);
+  }
+}
+
+body.scroll-lock-ios .preloader {
+  padding: 0 17px 0 0;
+
+  @include vp-1023 {
+    padding: 0;
+  }
+}
+
+@keyframes preload-animation{
+  0% {
+    gap: 2vw;
+  }
+
+  50% {
+    gap: 4vw;
+    transform: rotate(45deg) translateZ(0);
+  }
+
+  100% {
+    gap: 2vw;
+    transform: rotate(90deg) translateZ(0);
+  }
+}

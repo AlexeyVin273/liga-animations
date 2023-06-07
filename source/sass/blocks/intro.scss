@@ -5,6 +5,10 @@
   min-height: 100vh;
   width: 100%;
 
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
   .container {
     display: flex;
     flex-direction: column;
@@ -14,6 +18,11 @@
 
     width: 100%;
     min-height: 100vh;
+
+    @include vp-767 {
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
   }
 
   &__header {
@@ -21,6 +30,13 @@
     justify-content: space-between;
     align-items: flex-end;
     margin: 0 0 80px;
+
+    @include vp-767 {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0 0 40px;
+    }
   }
 
   &__title {
@@ -31,6 +47,19 @@
     line-height: 1;
     font-weight: 500;
     color: $color-night-rider;
+
+    @include vp-1023 {
+      max-width: 350px;
+
+      font-size: 50px;
+    }
+
+    @include vp-767 {
+      max-width: 300px;
+      margin: 0 0 20px;
+
+      font-size: 40px;
+    }
   }
 
   &__text {
@@ -41,6 +70,15 @@
     line-height: 24px;
     color: $color-night-rider;
     text-align: right;
+
+    @include vp-1023 {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    @include vp-767 {
+      text-align: left;
+    }
   }
 
   &__nav-list {
@@ -50,8 +88,15 @@
 
     align-self: flex-end;
     display: grid;
-    grid-template-columns: repeat(3, 370px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px 30px;
+    width: 1270px;
+    max-width: 100%;
+
+    @include vp-767 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
   }
 
   &__nav-item {
@@ -77,6 +122,22 @@
 
     @include hover-focus {
       background-color: rgba($color-default-white, 0.4);
+    }
+
+    @include vp-1023 {
+      min-height: 100px;
+      padding: 15px;
+
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @include vp-767 {
+      min-height: 70px;
+      padding: 16px 8px;
+
+      font-size: 14px;
+      line-height: 17px;
     }
   }
 
@@ -107,5 +168,11 @@
 
       user-select: none;
     }
+  }
+
+  &.is-shown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
   }
 }

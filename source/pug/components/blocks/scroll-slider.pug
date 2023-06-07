@@ -23,11 +23,11 @@ mixin scroll-slider()
       },
     ];
 
-  section(id="scroll-slider").scroll-slider
+  section(id="scroll-slider", data-scroll-slider="parent").scroll-slider
     h2.visually-hidden Скролл слайдер
     .scroll-slider__slides
       each slide in slides
-        .scroll-slider__slide
+        .scroll-slider__slide(data-scroll-slider="slide")
           .container
             .content-block
               h2!= slide.title

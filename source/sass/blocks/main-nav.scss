@@ -44,19 +44,23 @@
 
   .container {
     height: 100%;
-  }
+    padding-top: 70px;
+    padding-bottom: 70px;
 
-  &__wrapper {
-    height: 100%;
-    width: 100%;
-    padding: 70px 0;
-    overflow: auto;
+    @include vp-767 {
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
   }
 
   &__title-wrapper {
     margin: 0 0 35px;
 
     overflow: hidden;
+
+    @include vp-767 {
+      margin: 0 0 20px;
+    }
   }
 
   &__title {
@@ -69,6 +73,42 @@
 
     transform: translate3d(0, 100%, 0);
     transition: transform $trans-default;
+
+    @include vp-767 {
+      font-size: 40px;
+      line-height: 48px;
+    }
+  }
+
+  &__list-wrapper {
+    max-height: 90%;
+    padding: 0 0 70px;
+    width: 100%;
+
+    overflow: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba($color-default-white, 0.1) rgba($color-default-white, 0.6);
+
+    &::-webkit-scrollbar {
+      width: 8px;
+
+      @include vp-767 {
+        width: 5px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba($color-default-white, 0.1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color-default-white, 0.6);
+    }
+
+    @include vp-767 {
+      padding: 0 0 40px;
+    }
   }
 
   &__list {
@@ -76,6 +116,7 @@
     flex-direction: column;
     margin: 0;
     padding: 0;
+    width: 100%;
 
     list-style: none;
   }
@@ -94,6 +135,10 @@
     &:last-child {
       margin: 0;
     }
+
+    @include vp-767 {
+      margin: 0 0 18px;
+    }
   }
 
   &__link {
@@ -106,5 +151,10 @@
 
     transform: translate3d(0, 100%, 0);
     transition: transform $trans-default;
+
+    @include vp-767 {
+      font-size: 30px;
+      line-height: 37px;
+    }
   }
 }

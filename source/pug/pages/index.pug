@@ -2,6 +2,7 @@ extends ../components/base/layout
 
 block variables
   - const title = "Анимации" //- на страницах кроме главной используйте О нас — ProjectName
+  - const preloading = true
   - const wrapperMods = ""
   - const hasHeader = true
   - const headerMods = ""
@@ -22,3 +23,5 @@ block main
     +scroll-slider()
 
 block modals
+  if (preloading)
+    +preloader()
