@@ -1,8 +1,9 @@
 import {ScrollLock} from '../utils/scroll-lock';
-// import {gsap} from '../vendor/gsap.min.js';
-// import {ScrollTrigger} from '../vendor/ScrollTrigger.min.js';
+import {gsap} from '../vendor/gsap.min.js';
+import {ScrollTrigger} from '../vendor/ScrollTrigger.min.js';
+import {resizeObserver} from '../utils/observers';
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 const setHeaderHeight = () => {
   const headerEl = document.querySelector('.header');
@@ -24,13 +25,7 @@ const initHeader = () => {
 
   const scrollLock = new ScrollLock();
 
-  // ScrollTrigger.create({
-  //   trigger: headerEl,
-  //   start: 'top top',
-  //   end: 'top top',
-  //   toggleClass: 'active-bg',
-  //   markers: true,
-  // });
+
 
   const menuToggle = headerEl.querySelector('.header__toggle');
   const mainNav = headerEl.querySelector('.main-nav');
@@ -46,6 +41,39 @@ const initHeader = () => {
     mainNav.classList.toggle('is-active');
     headerEl.classList.toggle('menu-opened');
   });
+
+  let headerTrigger = null;
+
+  const initHeaderTrigger = () => {
+    if (headerTrigger) {
+      headerTrigger.kill();
+      headerTrigger = null;
+    }
+
+    const scrollSlider = document.querySelector('[data-scroll-slider="parent"]');
+    const endPos = scrollSlider ? scrollSlider.getBoundingClientRect().top : document.body.offsetHeight;
+
+    headerTrigger = ScrollTrigger.create({
+      trigger: headerEl,
+      start: `${window.innerHeight} top`,
+      end: `${endPos} ${headerEl.offsetHeight}`,
+      onEnter: () => {
+        headerEl.classList.add('bg-active');
+      },
+      onEnterBack: () => {
+        headerEl.classList.add('bg-active');
+      },
+      onLeaveBack: () => {
+        headerEl.classList.remove('bg-active');
+      },
+      onLeave: () => {
+        headerEl.classList.remove('bg-active');
+      },
+    });
+  };
+
+  initHeaderTrigger();
+  resizeObserver.subscribe(initHeaderTrigger);
 };
 
 export {initHeader};
