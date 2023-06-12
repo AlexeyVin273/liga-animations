@@ -3,6 +3,7 @@ import {initHeader} from './modules/header';
 import {initIntro} from './modules/intro';
 import {initAnimations} from './modules/animation/animation';
 import {hidePreloader} from './modules/preloader';
+import {initMap} from './modules/map/map';
 
 // ---------------------------------
 
@@ -23,7 +24,9 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => {
     setTimeout(() => {
       hidePreloader(initIntro);
-    }, 2000);
+    }, 1500);
+
+    initMap();
   });
 });
 

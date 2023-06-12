@@ -152,9 +152,15 @@
     transform: translate3d(0, 100%, 0);
     transition: transform $trans-default;
 
+    user-select: none;
+
     @include vp-767 {
       font-size: 30px;
       line-height: 37px;
+    }
+
+    &:not([href]) {
+      cursor: default;
     }
   }
 }

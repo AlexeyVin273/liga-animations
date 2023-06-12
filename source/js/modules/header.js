@@ -25,8 +25,6 @@ const initHeader = () => {
 
   const scrollLock = new ScrollLock();
 
-
-
   const menuToggle = headerEl.querySelector('.header__toggle');
   const mainNav = headerEl.querySelector('.main-nav');
 
@@ -51,11 +49,12 @@ const initHeader = () => {
     }
 
     const scrollSlider = document.querySelector('[data-scroll-slider="parent"]');
+    const startPos = scrollSlider ? window.innerHeight : 'top';
     const endPos = scrollSlider ? scrollSlider.getBoundingClientRect().top : document.body.offsetHeight;
 
     headerTrigger = ScrollTrigger.create({
       trigger: headerEl,
-      start: `${window.innerHeight} top`,
+      start: `${startPos} top`,
       end: `${endPos} ${headerEl.offsetHeight}`,
       onEnter: () => {
         headerEl.classList.add('bg-active');
@@ -72,8 +71,12 @@ const initHeader = () => {
     });
   };
 
-  initHeaderTrigger();
-  resizeObserver.subscribe(initHeaderTrigger);
+  const introEl = document.querySelector('.intro');
+
+  if (introEl) {
+    initHeaderTrigger();
+    resizeObserver.subscribe(initHeaderTrigger);
+  }
 };
 
 export {initHeader};

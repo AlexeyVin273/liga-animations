@@ -6,6 +6,11 @@ gsap.registerPlugin(ScrollTrigger);
 const initParallax = () => {
   initIntroParallax(document.querySelector('.intro > .container'));
 
+  const parallaxEl = document.querySelector('.parallax');
+  if (!parallaxEl) {
+    return;
+  }
+
   gsap.to('[data-parallax="fade-scale"]', {
     scrollTrigger: {
       trigger: '.parallax ul',

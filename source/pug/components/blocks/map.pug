@@ -1,0 +1,14 @@
+mixin map(options = {})
+  - const task = options.task || "1";
+  - const terms = options.terms || [];
+  - const pinsUrl = options.pinsUrl || null;
+
+  section.map
+    .container
+      h1 Задание по&nbsp;карте &#8470;#{task}
+      .map__terms
+        h2 Техническое задание
+        each term in terms
+          p!= term
+      .map__wrapper
+        .map__container(data-map=`map-${task}`, data-map-center="49.630321, 72.858411", data-map-zoom=16, data-map-pins=pinsUrl)

@@ -25,8 +25,13 @@ const initScrollSlider = () => {
   const initSlider = () => {
     clearTimeout(timerId);
     timerId = setTimeout(() => {
-      const slides = document.querySelectorAll('[data-scroll-slider="slide"]');
       const slider = document.querySelector('[data-scroll-slider="parent"]');
+
+      if (!slider) {
+        return;
+      }
+
+      const slides = slider.querySelectorAll('[data-scroll-slider="slide"]');
       const innerHeight = window.innerHeight;
       slider.setAttribute('style', `min-height: ${innerHeight * slides.length}px`);
 

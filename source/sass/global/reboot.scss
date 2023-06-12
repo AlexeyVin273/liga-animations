@@ -3,6 +3,9 @@
 *::after {
   box-sizing: border-box;
 }
+:root {
+  --header-height: 70px;
+}
 
 html,
 body {
@@ -32,6 +35,7 @@ body {
   height: 100%;
 
   background-color: $color-default-white;
+  -webkit-tap-highlight-color: $color-transparent;
 }
 
 a {
