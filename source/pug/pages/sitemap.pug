@@ -66,11 +66,19 @@ block main
         name: "Карта 2 — map-2.html",
         src: "map-2.html"
       },
+      {
+        name: "Карта 3 — map-3.html",
+        src: "map-3.html"
+      },
+      {
+        name: "Карта 4 — map-4.html",
+        src: "map-4.html"
+      },
     ]
 
   main
     .container
-      img(src="https://via.placeholder.com/300x150" width="300" alt="Логотип проекта")
+      +icon("logo", "362", "67")
       h1 Список страниц
       ol
         each page in pages

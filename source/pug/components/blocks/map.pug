@@ -2,6 +2,9 @@ mixin map(options = {})
   - const task = options.task || "1";
   - const terms = options.terms || [];
   - const pinsUrl = options.pinsUrl || null;
+  - const scrollZoom = options.scrollZoom || false;
+  - const filters = options.filters || [];
+  - const clusterize = options.clusterize || null;
 
   section.map
     .container
@@ -11,4 +14,15 @@ mixin map(options = {})
         each term in terms
           p!= term
       .map__wrapper
-        .map__container(data-map=`map-${task}`, data-map-center="49.630321, 72.858411", data-map-zoom=16, data-map-pins=pinsUrl)
+        if (scrollZoom)
+          .map__overlay
+            p Зажмите ctrl и&nbsp;крутите колёсико мыши, чтобы приблизить или отдалить карту
+        .map__container(data-map-center="49.631321, 72.863411", data-map-zoom=16, data-map-pins=pinsUrl, data-map-scrollZoom=scrollZoom, data-map-clusterize=clusterize)
+      if (filters.length)
+        ul.map__filters(data-map-filters)
+          each filter in filters
+            li.map__filter-item
+              .map__filter(data-map-filter=filter.category)
+                +icon(filter.icon, "30", "30")
+                span!= filter.title
+

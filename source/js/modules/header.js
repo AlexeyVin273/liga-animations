@@ -30,15 +30,32 @@ const initHeader = () => {
 
   menuToggle.addEventListener('click', () => {
     if (menuToggle.classList.contains('is-active')) {
-      scrollLock.enableScrolling();
+      closeMenu();
     } else {
-      scrollLock.disableScrolling();
+      openMenu();
     }
-
-    menuToggle.classList.toggle('is-active');
-    mainNav.classList.toggle('is-active');
-    headerEl.classList.toggle('menu-opened');
   });
+
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape' && menuToggle.classList.contains('is-active')) {
+      evt.stopPropagation();
+      closeMenu();
+    }
+  });
+
+  const openMenu = () => {
+    scrollLock.disableScrolling();
+    menuToggle.classList.add('is-active');
+    mainNav.classList.add('is-active');
+    headerEl.classList.add('menu-opened');
+  };
+
+  const closeMenu = () => {
+    scrollLock.enableScrolling();
+    menuToggle.classList.remove('is-active');
+    mainNav.classList.remove('is-active');
+    headerEl.classList.remove('menu-opened');
+  };
 
   let headerTrigger = null;
 

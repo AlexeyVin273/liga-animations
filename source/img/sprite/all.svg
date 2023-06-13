@@ -1,30 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
-<clipPath id="clip0_1717_1752">
-<rect width="30" height="30" fill="white" transform="translate(10 10)"></rect>
-</clipPath>
-
-<clipPath id="clip0_1701_1786">
-<rect width="63.4768" height="57.5166" fill="white" transform="translate(13.4106 16.2119)"></rect>
-</clipPath>
-
-<clipPath id="clip0_1717_1741">
-<rect width="35" height="35" fill="white" transform="translate(7 8)"></rect>
-</clipPath>
-
-<clipPath id="clip0_1717_1749">
-<rect width="40" height="40" fill="white" transform="translate(5 5)"></rect>
-</clipPath>
-
-<clipPath id="clip0_1717_1745">
-<rect width="35" height="35" fill="white" transform="translate(7 8)"></rect>
-</clipPath>
-</defs><symbol id="icon-all-object" viewBox="0 0 50 50"><g fill="none">
-<g clip-path="url(#clip0_1717_1752)">
-<path d="M25.0018 30.89L14.015 25.0022L18.5049 22.5937L16.4979 21.5181L10.001 25.0022L25.0018 33.0389L40.0005 25.0022L33.5036 21.5181L31.5009 22.5937L35.9887 25.0022L25.0018 30.89Z" fill="#373737"></path>
-<path d="M25.0018 37.8512L14.015 31.9633L18.5049 29.5549L16.4979 28.4792L10.001 31.9633L25.0018 40.0001L40.0005 31.9633L33.5036 28.4792L31.5009 29.5549L35.9887 31.9633L25.0018 37.8512Z" fill="#373737"></path>
-<path d="M25.0018 9.99951L10.001 18.0363L25.0018 26.0707L40.0005 18.034L25.0018 9.99951ZM25.0018 12.1484L35.9887 18.0363L25.0018 23.9242L14.015 18.0363L25.0018 12.1484Z" fill="#373737"></path>
-</g>
-</g></symbol>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <symbol id="logo" viewBox="0 0 362 67"><g fill="none">
   <path d="M9.23295 2.54544V52H0.49147V2.54544H9.23295Z" fill="currentColor"></path>
   <path d="M18.3219 52V14.9091H27.0634V52H18.3219ZM22.7168 9.64487C21.3324 9.64487 20.1411 9.18607 19.143 8.26845C18.1449 7.33474 17.6458 6.21589 17.6458 4.91192C17.6458 3.59184 18.1449 2.473 19.143 1.55538C20.1411 0.621671 21.3324 0.154816 22.7168 0.154816C24.1174 0.154816 25.3087 0.621671 26.2907 1.55538C27.2888 2.473 27.7878 3.59184 27.7878 4.91192C27.7878 6.21589 27.2888 7.33474 26.2907 8.26845C25.3087 9.18607 24.1174 9.64487 22.7168 9.64487Z" fill="currentColor"></path>

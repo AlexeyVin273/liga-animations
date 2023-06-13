@@ -1,0 +1,21 @@
+extends ../components/base/layout
+
+block variables
+  - const title = "Карта 3" //- на страницах кроме главной используйте О нас — ProjectName
+  - const preloading = false
+  - const wrapperMods = ""
+  - const hasHeader = true
+  - const headerMods = "bg-active"
+  - const hasFooter = false
+  - const footerMods = ""
+  - const hasMap = true
+  - const currentUrl = "map-3.html" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
+
+block data
+  include ../data/maps.pug
+
+block main
+  main
+    +map(maps[2])
+
+block modals

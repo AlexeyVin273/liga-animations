@@ -1,6 +1,10 @@
 .map {
   padding: calc(var(--header-height) + 50px) 0 100vh;
 
+  @include vp-767 {
+    padding: calc(var(--header-height) + 20px) 0 100vh;
+  }
+
   h1 {
     margin: 0 0 60px;
 
@@ -8,6 +12,12 @@
     line-height: 1;
     font-weight: 500;
     color: $color-night-rider;
+
+    @include vp-767 {
+      margin: 0 0 40px;
+
+      font-size: 40px;
+    }
   }
 
   h2 {
@@ -15,6 +25,11 @@
 
     font-size: 24px;
     line-height: 28px;
+
+    @include vp-767 {
+      font-size: 20px;
+      line-height: 25px;
+    }
   }
 
   &__terms {
@@ -26,20 +41,152 @@
     p:not(:last-child) {
       margin: 0 0 16px;
     }
+
+    @include vp-767 {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &__wrapper {
+    position: relative;
     width: 100%;
     height: 700px;
     display: flex;
+    margin: 0 0 50px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 10px 2px rgba($color-default-black, 0.4);
+
+    @include vp-767 {
+      margin: 0 0 30px;
+
+      height: 500px;
+    }
   }
 
   &__container {
+    position: relative;
     width: 100%;
     height: 100%;
+
+    z-index: 1;
+  }
+
+  &__overlay {
+    position: absolute;
+    left: -2%;
+    top: -2%;
+    width: 104%;
+    height: 104%;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+
+    background-color: rgba($color-default-black, 0.4);
+    z-index: 2;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity $trans-default,
+      visibility $trans-default;
+
+    p {
+      font-size: 22px;
+      line-height: 27px;
+      color: $color-default-white;
+      text-align: center;
+
+      @include vp-767 {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    @include vp-767 {
+      padding: 15px 10px;
+    }
+  }
+
+  &__filters {
+    padding: 0;
+    margin: -10px;
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    @include vp-767 {
+      margin: -6px;
+    }
+  }
+
+  &__filter-item {
+    margin: 10px;
+    height: 100%;
+
+    @include vp-767 {
+      margin: 6px;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+
+    background-color: rgba($color-light-slate-blue, 1);
+    color: $color-default-white;
+    border-radius: 25px;
+
+    user-select: none;
+    cursor: pointer;
+    transition: background-color $trans-in-out-400;
+
+    svg {
+      flex-shrink: 0;
+      margin: 0 16px 0 0;
+      width: 30px;
+      height: auto;
+
+      @include vp-767 {
+        width: 20px;
+        margin: 0 12px 0 0;
+      }
+    }
+
+    @include vp-767 {
+      padding: 8px;
+      border-radius: 15px;
+
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    @include hover-focus {
+      background-color: rgba($color-light-slate-blue, 0.9);
+    }
+
+    &.is-active {
+      background-color: rgba($color-blue-violet, 1);
+
+      @include hover-focus {
+        background-color: rgba($color-blue-violet, 0.9);
+      }
+    }
   }
 }
 
