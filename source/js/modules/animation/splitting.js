@@ -1,8 +1,8 @@
 import Splitting from '../../vendor/splitting.min';
 
 const initSplitting = () => {
-  Splitting();
-  Splitting({
+  Splitting();  //eslint-disable-line
+  Splitting({ //eslint-disable-line
     target: '[data-splitting-words]',
     by: 'words',
   });

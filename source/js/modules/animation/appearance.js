@@ -7,7 +7,7 @@ export const initAppearance = () => {
   ScrollTrigger.batch('[data-appearance="fade"]', {
     start: 'top 80%',
     batchMax: 2,
-    onEnter: batch => {
+    onEnter: (batch) => {
       gsap.to(batch, {autoAlpha: 1, overwrite: true});
     },
   });
@@ -15,7 +15,7 @@ export const initAppearance = () => {
   ScrollTrigger.batch('[data-appearance="fade-in"]', {
     start: 'top 80%',
     batchMax: 2,
-    onEnter: batch => {
+    onEnter: (batch) => {
       gsap.to(batch, {autoAlpha: 1, y: 0, overwrite: true});
     },
   });
@@ -23,7 +23,7 @@ export const initAppearance = () => {
   ScrollTrigger.batch('[data-appearance="fade-scale"]', {
     start: 'top 80%',
     batchMax: 2,
-    onEnter: batch => {
+    onEnter: (batch) => {
       gsap.to(batch, {autoAlpha: 1, scale: 1, overwrite: true});
     },
   });
