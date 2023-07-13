@@ -61,22 +61,19 @@ const initHeader = () => {
 
   const initHeaderTrigger = () => {
     if (headerTrigger) {
-      // headerTrigger.update();
-      headerTrigger.refresh();
-      // headerTrigger.kill();
-      // headerTrigger = null;
-      // return;
+      headerTrigger.kill();
+      headerTrigger = null;
     }
 
     const scrollSlider = document.querySelector('[data-scroll-slider="parent"]');
     const startPos = scrollSlider ? window.innerHeight : 'top';
-    const endPos = scrollSlider ? scrollSlider.getBoundingClientRect().top : document.body.offsetHeight;
+    const endPos = document.body.offsetHeight - (scrollSlider ? scrollSlider.offsetHeight : 0);
 
     headerTrigger = ScrollTrigger.create({
       trigger: headerEl,
       start: `${startPos} top`,
       end: `${endPos} ${headerEl.offsetHeight}`,
-      invalidateOnRefresh: false,
+      scrub: false,
       onEnter: () => {
         headerEl.classList.add('bg-active');
       },
@@ -90,8 +87,6 @@ const initHeader = () => {
         headerEl.classList.remove('bg-active');
       },
     });
-
-    // headerTrigger.refresh();
   };
 
   const introEl = document.querySelector('.intro');

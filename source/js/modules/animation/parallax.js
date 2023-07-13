@@ -1,73 +1,87 @@
+import {AbstractAnimation} from './abstract-animation.js';
 import {gsap} from '../../vendor/gsap.min.js';
 import {ScrollTrigger} from '../../vendor/ScrollTrigger.min.js';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const initParallax = () => {
-  initIntroParallax(document.querySelector('.intro > .container'));
-
-  const parallaxEl = document.querySelector('.parallax');
-  if (!parallaxEl) {
-    return;
+class ParallaxAnimation extends AbstractAnimation {
+  constructor(container) {
+    super(container);
   }
 
-  gsap.to('[data-parallax="fade-scale"]', {
-    scrollTrigger: {
-      trigger: '.parallax ul',
-      start: 'top 90%',
-      end: 'top 50%',
-      scrub: 1,
-    },
-    ease: 'power1.inOut',
-    scale: 1,
-    autoAlpha: 1,
-    duration: 3,
-  });
-
-  gsap.to('[data-parallax="transform y"]', {
-    scrollTrigger: {
-      trigger: '.parallax ul',
-      start: 'top 90%',
-      end: 'top 50%',
-      scrub: 1,
-    },
-    ease: 'power1.inOut',
-    y: 0,
-    duration: 3,
-  });
-
-  gsap.to('[data-parallax="transform x"]', {
-    scrollTrigger: {
-      trigger: '.parallax ul',
-      start: 'top 90%',
-      end: 'top 30%',
-      scrub: 1,
-    },
-    ease: 'power1.inOut',
-    x: 0,
-    duration: 3,
-  });
-};
-
-const initIntroParallax = (container) => {
-  if (!container) {
-    return;
+  setTimelines() {
+    this._setFadeOutAnimation(this.container);
+    this._setTransformYAnimation(this.container);
+    this._setTransformXAnimation(this.container);
   }
 
-  const intro = document.querySelector('.intro');
-  gsap.to(container, {
-    scrollTrigger: {
-      trigger: intro,
-      start: 'bottom bottom',
-      end: 'bottom top',
-      scrub: 1,
-    },
-    scale: 0.75,
-    opacity: 0.5,
-    rotateX: '5deg',
-    y: '-10vh',
-    duration: 3,
-  });
-};
+  _setFadeOutAnimation(container) {
+    const fadeScaleTl = gsap.timeline({
+      paused: true,
+    });
 
-export {initParallax};
+    fadeScaleTl.to('[data-parallax="fade-scale"]', {
+      scale: 1,
+      autoAlpha: 1,
+      duration: 3,
+    });
+
+    this.scrollTriggers.push(
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top 90%',
+          end: 'top 50%',
+          scrub: 1,
+          animation: fadeScaleTl,
+        })
+    );
+
+    this.timelines.push(fadeScaleTl);
+  }
+
+  _setTransformYAnimation(container) {
+    const transformTl = gsap.timeline({
+      paused: true,
+    });
+
+    transformTl.to('[data-parallax="transform y"]', {
+      y: 0,
+      duration: 3,
+    });
+
+    this.scrollTriggers.push(
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top 90%',
+          end: 'top 40%',
+          scrub: 1,
+          animation: transformTl,
+        })
+    );
+
+    this.timelines.push(transformTl);
+  }
+
+  _setTransformXAnimation(container) {
+    const transformTl = gsap.timeline({
+      paused: true,
+    });
+
+    transformTl.to('[data-parallax="transform x"]', {
+      x: 0,
+      duration: 3,
+    });
+
+    this.scrollTriggers.push(
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top 90%',
+          end: 'top 30%',
+          scrub: 1,
+          animation: transformTl,
+        })
+    );
+
+    this.timelines.push(transformTl);
+  }
+}
+
+export {ParallaxAnimation};

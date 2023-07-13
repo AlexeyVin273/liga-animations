@@ -27,7 +27,7 @@ mixin parallax()
         p Эффекты, которые постоянно срабатывают по скроллу
           br
         | Скроллим скроллим и вжух вжух вжух!
-        ul
+        ul(data-animation="parallax")
           each item in items
             li
               .card(data-parallax=item.effect)!= item.effect
