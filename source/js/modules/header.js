@@ -61,8 +61,11 @@ const initHeader = () => {
 
   const initHeaderTrigger = () => {
     if (headerTrigger) {
-      headerTrigger.kill();
-      headerTrigger = null;
+      // headerTrigger.update();
+      headerTrigger.refresh();
+      // headerTrigger.kill();
+      // headerTrigger = null;
+      // return;
     }
 
     const scrollSlider = document.querySelector('[data-scroll-slider="parent"]');
@@ -73,6 +76,7 @@ const initHeader = () => {
       trigger: headerEl,
       start: `${startPos} top`,
       end: `${endPos} ${headerEl.offsetHeight}`,
+      invalidateOnRefresh: false,
       onEnter: () => {
         headerEl.classList.add('bg-active');
       },
@@ -86,6 +90,8 @@ const initHeader = () => {
         headerEl.classList.remove('bg-active');
       },
     });
+
+    // headerTrigger.refresh();
   };
 
   const introEl = document.querySelector('.intro');

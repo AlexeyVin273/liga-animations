@@ -88,7 +88,7 @@
     overflow: auto;
 
     scrollbar-width: thin;
-    scrollbar-color: rgba($color-default-white, 0.1) rgba($color-default-white, 0.6);
+    scrollbar-color: rgba($color-default-white, 0.6) rgba($color-default-white, 0.1);
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -129,7 +129,9 @@
     transition: transform $trans-in-out-400;
 
     @include hover-focus {
-      transform: translate3d(30px, 0, 0);
+      &:not(.is-active) {
+        transform: translate3d(30px, 0, 0);
+      }
     }
 
     &:last-child {

@@ -23,17 +23,6 @@ resizeObserverProto.observe(document.documentElement);
 
 export {resizeObserver};
 
-// везде следует использовать его прим: resizeObserver.subscribe(() => {console.log('asd')})
-
-
 const clickObserver = new EventObserver();
 window.addEventListener('click', clickObserver.fire);
 export {clickObserver};
-
-const escapeKeydownObserver = new EventObserver();
-window.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    setTimeout(() => escapeKeydownObserver.fire(evt), 0);
-  }
-});
-export {escapeKeydownObserver};
