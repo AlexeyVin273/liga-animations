@@ -2,7 +2,7 @@ import {AbstractAnimation} from './abstract-animation.js';
 import {gsap} from '../../vendor/gsap.min.js';
 import {ScrollTrigger} from '../../vendor/ScrollTrigger.min.js';
 
-class ParallaxAnimation extends AbstractAnimation {
+export class ParallaxAnimation extends AbstractAnimation {
   constructor(container) {
     super(container);
   }
@@ -83,5 +83,3 @@ class ParallaxAnimation extends AbstractAnimation {
     this.timelines.push(transformTl);
   }
 }
-
-export {ParallaxAnimation};

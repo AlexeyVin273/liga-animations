@@ -2,7 +2,7 @@ import {AbstractAnimation} from './abstract-animation.js';
 import {gsap} from '../../vendor/gsap.min.js';
 import {ScrollTrigger} from '../../vendor/ScrollTrigger.min.js';
 
-class IntroAnimation extends AbstractAnimation {
+export class IntroAnimation extends AbstractAnimation {
   constructor(container) {
     super(container);
   }
@@ -34,5 +34,3 @@ class IntroAnimation extends AbstractAnimation {
     this.timelines.push(introTl);
   }
 }
-
-export {IntroAnimation};

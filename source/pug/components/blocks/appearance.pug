@@ -26,7 +26,7 @@ mixin appearance()
         h2 Появление блоков
         p доскролили и вжух!
         p Можно делать через классы и высчитывать по скроллу getBoundingClientRect каждого блока, но гораздо проще использовать ScrollTrigger.batch()
-        ul
+        ul(data-animation="appearance")
           each item in items
             li
               .card(data-appearance=item.effect)!= item.effect

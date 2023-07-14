@@ -1,100 +1,99 @@
+import {AbstractAnimation} from './animation/abstract-animation';
 import {ScrollLock} from '../utils/scroll-lock';
-import {gsap} from '../vendor/gsap.min.js';
 import {ScrollTrigger} from '../vendor/ScrollTrigger.min.js';
-import {resizeObserver} from '../utils/observers';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const setHeaderHeight = () => {
-  const headerEl = document.querySelector('.header');
-
-  if (headerEl) {
-    const headerHeight = headerEl.getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
-  }
-};
-
-const initHeader = () => {
-  setHeaderHeight();
-
-  const headerEl = document.querySelector('.header');
-
-  if (!headerEl) {
-    return;
+class HeaderAnimation extends AbstractAnimation {
+  constructor(container) {
+    super(container);
   }
 
-  const scrollLock = new ScrollLock();
+  setScrollTriggers() {
+    const container = this.container;
 
-  const menuToggle = headerEl.querySelector('.header__toggle');
-  const mainNav = headerEl.querySelector('.main-nav');
-
-  menuToggle.addEventListener('click', () => {
-    if (menuToggle.classList.contains('is-active')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape' && menuToggle.classList.contains('is-active')) {
-      evt.stopPropagation();
-      closeMenu();
-    }
-  });
-
-  const openMenu = () => {
-    scrollLock.disableScrolling();
-    menuToggle.classList.add('is-active');
-    mainNav.classList.add('is-active');
-    headerEl.classList.add('menu-opened');
-  };
-
-  const closeMenu = () => {
-    scrollLock.enableScrolling();
-    menuToggle.classList.remove('is-active');
-    mainNav.classList.remove('is-active');
-    headerEl.classList.remove('menu-opened');
-  };
-
-  let headerTrigger = null;
-
-  const initHeaderTrigger = () => {
-    if (headerTrigger) {
-      headerTrigger.kill();
-      headerTrigger = null;
-    }
-
-    const scrollSlider = document.querySelector('[data-scroll-slider="parent"]');
+    const scrollSlider = document.querySelector('[data-animation="scroll-slider"]');
     const startPos = scrollSlider ? window.innerHeight : 'top';
     const endPos = document.body.offsetHeight - (scrollSlider ? scrollSlider.offsetHeight : 0);
 
-    headerTrigger = ScrollTrigger.create({
-      trigger: headerEl,
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: container,
       start: `${startPos} top`,
-      end: `${endPos} ${headerEl.offsetHeight}`,
+      end: `${endPos} ${container.offsetHeight}`,
       scrub: false,
       onEnter: () => {
-        headerEl.classList.add('bg-active');
+        container.classList.add('bg-active');
       },
       onEnterBack: () => {
-        headerEl.classList.add('bg-active');
+        container.classList.add('bg-active');
       },
       onLeaveBack: () => {
-        headerEl.classList.remove('bg-active');
+        container.classList.remove('bg-active');
       },
       onLeave: () => {
-        headerEl.classList.remove('bg-active');
+        container.classList.remove('bg-active');
       },
     });
-  };
 
-  const introEl = document.querySelector('.intro');
-
-  if (introEl) {
-    initHeaderTrigger();
-    resizeObserver.subscribe(initHeaderTrigger);
+    this.scrollTriggers.push(scrollTrigger);
   }
-};
+}
 
-export {initHeader};
+export class Header {
+  constructor(headerEl) {
+    this.headerEl = headerEl;
+  }
+
+  init() {
+    if (!this.headerEl) {
+      return;
+    }
+
+    this.setHeaderHeight();
+
+    this.scrollLock = new ScrollLock();
+    this.menuToggle = this.headerEl.querySelector('.header__toggle');
+    this.mainNav = this.headerEl.querySelector('.main-nav');
+
+    this.onMenuToggleClick = this.onMenuToggleClick.bind(this);
+    this.onEscKeydown = this.onEscKeydown.bind(this);
+
+    this.menuToggle.addEventListener('click', this.onMenuToggleClick);
+    document.addEventListener('keydown', this.onEscKeydown);
+
+    if (this.headerEl.classList.contains('header--index')) {
+      const headerAnimation = new HeaderAnimation(this.headerEl);
+      headerAnimation.init();
+    }
+  }
+
+  setHeaderHeight() {
+    if (this.headerEl) {
+      const headerHeight = this.headerEl.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    }
+  }
+
+  openMenu() {
+    this.scrollLock.disableScrolling();
+    this.menuToggle.classList.add('is-active');
+    this.mainNav.classList.add('is-active');
+    this.headerEl.classList.add('menu-opened');
+  }
+
+  closeMenu() {
+    this.scrollLock.enableScrolling();
+    this.menuToggle.classList.remove('is-active');
+    this.mainNav.classList.remove('is-active');
+    this.headerEl.classList.remove('menu-opened');
+  }
+
+  onMenuToggleClick() {
+    return this.menuToggle.classList.contains('is-active') ? this.closeMenu() : this.openMenu();
+  }
+
+  onEscKeydown(evt) {
+    if (evt.key === 'Escape' && this.menuToggle.classList.contains('is-active')) {
+      evt.stopPropagation();
+      this.closeMenu();
+    }
+  }
+}

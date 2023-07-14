@@ -1,82 +1,58 @@
-import {gsap} from '../../vendor/gsap.min';
 import {ScrollTrigger} from '../../vendor/ScrollTrigger.min';
-import {resizeObserver} from '../../utils/observers';
+import {AbstractAnimation} from './abstract-animation';
 
-gsap.registerPlugin(ScrollTrigger);
+export class ScrollSlider extends AbstractAnimation {
+  constructor(container) {
+    super(container);
+  }
 
-const initScrollSlider = () => {
-  let timerId;
-  let scrollTriggers = [];
+  setScrollTriggers() {
+    const container = this.container;
 
-  const clearScrollTriggers = () => {
-    scrollTriggers.forEach((scrollTrigger) => {
-      scrollTrigger.refresh();
-      scrollTrigger.kill();
-      scrollTrigger = null;
+    this.clearActiveSlides();
+    const slides = container.querySelectorAll('[data-scroll-slider="slide"]');
+    slides[0]?.classList.add('is-active');
+
+    const innerHeight = window.innerHeight;
+    container.setAttribute('style', `min-height: ${innerHeight * slides.length}px`);
+
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: container,
+      start: 'top bottom',
+      onToggle: this.setSlidesTriggers(slides, innerHeight),
     });
 
-    scrollTriggers = [];
-  };
+    this.scrollTriggers.push(scrollTrigger);
+  }
 
-  const clearActiveSlides = (slides) => {
-    slides.forEach((slide) => slide.classList.remove('is-active'));
-  };
+  clearActiveSlides() {
+    const activeSlides = this.container.querySelectorAll('[data-scroll-slider="slide"].is-active');
+    activeSlides.forEach((slide) => slide.classList.remove('is-active'));
+  }
 
-  const initSlider = () => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      const slider = document.querySelector('[data-scroll-slider="parent"]');
-
-      if (!slider) {
-        return;
-      }
-
-      const slides = slider.querySelectorAll('[data-scroll-slider="slide"]');
-      const innerHeight = window.innerHeight;
-      slider.setAttribute('style', `min-height: ${innerHeight * slides.length}px`);
-
-      clearActiveSlides(slides);
-      slides[0].classList.add('is-active');
-      clearScrollTriggers();
-
-      scrollTriggers.push(
-          ScrollTrigger.create({
-            trigger: slider,
-            start: 'top bottom',
-            onToggle: initSlides(slides, innerHeight),
-          })
-      );
-    }, 0);
-  };
-
-  const initSlides = (slides, innerHeight) => {
+  setSlidesTriggers(slides, innerHeight) {
     slides.forEach((element, i) => {
-      scrollTriggers.push(
-          ScrollTrigger.create({
-            trigger: element,
-            start: `${i * innerHeight} 30%`,
-            end: `${(i + 1) * innerHeight} 30%`,
-            onEnter: () => {
-              element.classList.add('is-active');
-            },
-            onLeave: () => {
-              element.classList.remove('is-active');
-            },
-            onEnterBack: () => {
-              element.classList.add('is-active');
-            },
-            onLeaveBack: () => {
-              if (element !== slides[0]) {
-                element.classList.remove('is-active');
-              }
-            },
-          })
-      );
+      const scrollTrigger = ScrollTrigger.create({
+        trigger: element,
+        start: `${i * innerHeight} 30%`,
+        end: `${(i + 1) * innerHeight} 30%`,
+        onEnter: () => {
+          element.classList.add('is-active');
+        },
+        onLeave: () => {
+          element.classList.remove('is-active');
+        },
+        onEnterBack: () => {
+          element.classList.add('is-active');
+        },
+        onLeaveBack: () => {
+          if (element !== slides[0]) {
+            element.classList.remove('is-active');
+          }
+        },
+      });
+
+      this.scrollTriggers.push(scrollTrigger);
     });
-  };
-
-  initSlider();
-  resizeObserver.subscribe(initSlider);
-};
-
-export {initScrollSlider};
+  }
+}
