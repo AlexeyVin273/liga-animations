@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => {
     setTimeout(() => {
       hidePreloader(initIntro);
-    }, 0);
+    }, 1500);
 
     initMap();
   });
