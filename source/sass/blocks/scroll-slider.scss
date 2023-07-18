@@ -21,10 +21,8 @@
     top: 0;
     width: 100%;
 
-    min-height: 100vh;
-    max-height: 100vh;
-    min-height: calc(100*var(--vh, 1vh));
-    max-height: calc(100*var(--vh, 1vh));
+    min-height: calc(100 * var(--vh, 1vh));
+    max-height: calc(100 * var(--vh, 1vh));
 
     opacity: 0;
     pointer-events: none;

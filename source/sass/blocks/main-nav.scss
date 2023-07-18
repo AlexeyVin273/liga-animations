@@ -7,13 +7,13 @@
   padding: var(--header-height) 0 0;
 
   background-color: $color-night-rider;
-  clip-path: polygon(0 0,100% 0,100% 0,0 0);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   pointer-events: none;
 
   transition: clip-path $trans-in-out-600;
 
   &.is-active {
-    clip-path: polygon(0 0,100% 0,100% 100%,0 110%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 110%);
     pointer-events: all;
 
     #{$root}__title {
@@ -30,7 +30,7 @@
     }
 
     #{$root}__item:nth-child(n + 2) #{$root}__link {
-      transition: transform $trans-in-out-400 0.40s;
+      transition: transform $trans-in-out-400 0.4s;
     }
 
     #{$root}__item:nth-child(n + 3) #{$root}__link {
@@ -38,7 +38,7 @@
     }
 
     #{$root}__item:nth-child(n + 4) #{$root}__link {
-      transition: transform $trans-in-out-400 0.50s;
+      transition: transform $trans-in-out-400 0.5s;
     }
   }
 

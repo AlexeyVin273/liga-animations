@@ -32,7 +32,8 @@ const initMap = () => {
       let objectManager = new window.ymaps.ObjectManager({
         clusterize: clusterMap,
         gridSize: 200,
-        preset: 'islands#invertedVioletClusterIcons',
+        // preset: 'islands#invertedVioletClusterIcons',
+        clusterIconLayout: 'default#pieChart',
         clusterIconPieChartRadius: 30,
         clusterIconPieChartCoreRadius: 15,
         clusterDisableClickZoom: true,
@@ -46,7 +47,7 @@ const initMap = () => {
 
       const jsonUrl = mapContainer.getAttribute('data-map-pins');
       if (jsonUrl) {
-        setPlacemarksFromJson(jsonUrl, objectManager);
+        setPlacemarksFromJson(jsonUrl, objectManager, mapContainer);
       }
 
       if (scrollZoom) {
@@ -54,13 +55,28 @@ const initMap = () => {
       }
 
       const mapFilters = new MapFilters(map, updateFilters, objectManager); //eslint-disable-line
+
+      objectManager.clusters.events.add(['mouseenter', 'mouseleave'], (evt) => {
+        const objectId = evt.get('objectId');
+        if (evt.get('type') === 'mouseenter') {
+          objectManager.clusters.setClusterOptions(objectId, {
+            clusterIconPieChartRadius: 32,
+            clusterIconPieChartCoreRadius: 16,
+          });
+        } else {
+          objectManager.clusters.setClusterOptions(objectId, {
+            clusterIconPieChartRadius: 30,
+            clusterIconPieChartCoreRadius: 15,
+          });
+        }
+      });
     });
   };
 };
 
 const setPlacemark = () => {
   let placemark = new window.ymaps.Placemark([49.627855, 72.855157], {
-    hintContent: 'Чудо-кот',
+    balloonContent: 'Здесь живёт кот Василий. Я обитаю по соседству.',
   }, {
     iconLayout: 'default#image',
     iconImageHref: '../img/svg/pin.svg',
@@ -71,7 +87,7 @@ const setPlacemark = () => {
   myMap.geoObjects.add(placemark);
 };
 
-const setPlacemarksFromJson = (jsonUrl, objectManager) => {
+const setPlacemarksFromJson = (jsonUrl, objectManager, mapContainer) => {
   objectManager.objects.options.set({
     iconLayout: getPlacemarkLayout(),
     iconShape: {
@@ -107,6 +123,9 @@ const setPlacemarksFromJson = (jsonUrl, objectManager) => {
           category: pin.category,
           icon: pin.icon,
         },
+        options: {
+          iconColor: getRandomColor(),
+        },
       };
 
       placemarks.push(placemark);
@@ -114,12 +133,24 @@ const setPlacemarksFromJson = (jsonUrl, objectManager) => {
 
     objectManager.add(placemarks);
     myMap.geoObjects.add(objectManager);
+
+    /*
+    ** Добавляем hover на метку
+    */
+    objectManager.objects.events.add(['mouseenter', 'mouseleave'], (evt) => {
+      const objectId = evt.get('objectId');
+      const placemarkEl = mapContainer.querySelector(`#placemark-${objectId}`);
+
+      if (placemarkEl) {
+        placemarkEl.classList[evt.get('type') === 'mouseenter' ? 'add' : 'remove']('is-hover');
+      }
+    });
   });
 };
 
 const getPlacemarkLayout = () => {
   const markup = [
-    '<div class="placemark">',
+    '<div class="placemark" id=placemark-$[id]>',
     '<div class="placemark__icon">',
     '<svg aria-hidden="true">',
     '<use xlink:href="#$[properties.icon]"></use>',
@@ -231,6 +262,15 @@ const updateFilters = (objectManager, currentFilter) => {
 
     return object.properties.category === currentFilter;
   });
+};
+
+const getRandomColor = () => {
+  const placemarkColors = [
+    '#DB425A', '#4C4DA2', '#00DEAD', '#D73AD2',
+    '#F8CC4D', '#F88D00', '#AC646C', '#548FB7'
+  ];
+
+  return placemarkColors[Math.floor(Math.random() * placemarkColors.length)];
 };
 
 export {initMap};

@@ -10,8 +10,8 @@
   align-items: center;
   padding: 50px;
 
-  background: $color-persian-blue;
-  background: linear-gradient(125deg, $color-persian-blue 0%, $color-navy 31%, $color-sherpa-blue 88%);
+  background-color: $color-persian-blue;
+  background-image: linear-gradient(125deg, $color-persian-blue 0%, $color-navy 31%, $color-sherpa-blue 88%);
   clip-path: polygon(100% 0, 100% 100%, 153% 100%, 0 152%, 0 0);
   transition: clip-path $trans-600;
 
@@ -25,7 +25,7 @@
 
     animation-name: preload-animation;
     animation-duration: 1.5s;
-    animation-timing-function: cubic-bezier(0.35, 0.8, 0.165, 1);
+    animation-timing-function: cubic-bezier(0.35, 0.8, 0.17, 1);
     animation-iteration-count: infinite;
     will-change: transform;
   }
@@ -50,7 +50,7 @@ body.scroll-lock-ios .preloader {
   }
 }
 
-@keyframes preload-animation{
+@keyframes preload-animation {
   0% {
     gap: 2vw;
   }

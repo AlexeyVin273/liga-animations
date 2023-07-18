@@ -154,13 +154,17 @@
 
     user-select: none;
     cursor: pointer;
-    transition: background-color $trans-in-out-400;
+    transition:
+      background-color $trans-in-out-400,
+      box-shadow $trans-in-out-400;
 
     svg {
       flex-shrink: 0;
       margin: 0 16px 0 0;
       width: 30px;
       height: auto;
+      transform: translate3d(0, 0, 0);
+      transition: transform $trans-in-out-400;
 
       @include vp-767 {
         width: 20px;
@@ -178,14 +182,16 @@
 
     @include hover-focus {
       background-color: rgba($color-light-slate-blue, 0.9);
+
+      svg {
+        transform: scale(1.2) translate3d(0, 0, 0);
+      }
     }
 
     &.is-active {
       background-color: rgba($color-blue-violet, 1);
-
-      @include hover-focus {
-        background-color: rgba($color-blue-violet, 0.9);
-      }
+      box-shadow: 0 2px 4px 2px rgba($color-light-slate-blue, 0.3);
+      pointer-events: none;
     }
   }
 }

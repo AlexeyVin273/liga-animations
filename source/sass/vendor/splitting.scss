@@ -4,11 +4,6 @@
   display: inline-block;
 }
 
-/* Psuedo-element chars */
-.splitting .char {
-  position: relative;
-}
-
 /**
  * Populate the psuedo elements with the character to allow for expanded effects
  * Set to `display: none` by default; just add `display: block` when you want
@@ -47,6 +42,8 @@
 }
 
 .splitting .char {
+  position: relative;
+
   /* Percent (0-1) of the char's position */
   --char-percent: calc(var(--char-index) / var(--char-total));
 
@@ -66,12 +63,12 @@
 }
 
 .is-shown .splitting .char {
-  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
+  animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
   animation-delay: calc(40ms * var(--char-index));
 }
 
 .is-shown .splitting .word {
-  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
+  animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
   animation-delay: calc(40ms * var(--char-index));
 }
 
@@ -81,7 +78,7 @@
 
 @keyframes slide-in {
   from {
-    transform: translateY(-1em) rotate(-.5turn) scale(0.5);
+    transform: translateY(-1em) rotate(-0.5turn) scale(0.5);
     opacity: 0;
   }
 }
