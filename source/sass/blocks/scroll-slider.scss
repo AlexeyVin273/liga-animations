@@ -12,6 +12,10 @@
 
     min-height: 100vh;
     max-height: 100vh;
+    /* stylelint-disable-next-line */
+    min-height: calc(100 * var(--vh, 1vh));
+    /* stylelint-disable-next-line */
+    max-height: calc(100 * var(--vh, 1vh));
     overflow: hidden;
   }
 
@@ -21,7 +25,11 @@
     top: 0;
     width: 100%;
 
+    min-height: 100vh;
+    max-height: 100vh;
+    /* stylelint-disable-next-line */
     min-height: calc(100 * var(--vh, 1vh));
+    /* stylelint-disable-next-line */
     max-height: calc(100 * var(--vh, 1vh));
 
     opacity: 0;
@@ -37,6 +45,8 @@
       justify-content: center;
       text-align: center;
       min-height: 100vh;
+      /* stylelint-disable-next-line */
+      min-height: calc(100 * var(--vh, 1vh));
     }
 
     &.is-active {
@@ -54,6 +64,8 @@
     right: 0;
 
     min-height: 100vh;
+    /* stylelint-disable-next-line */
+    min-height: calc(100 * var(--vh, 1vh));
 
     z-index: -1;
 

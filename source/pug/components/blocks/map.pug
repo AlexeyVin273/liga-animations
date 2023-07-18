@@ -6,7 +6,7 @@ mixin map(options = {})
   - const filters = options.filters || [];
   - const clusterize = options.clusterize || null;
 
-  section.map
+  section.map(data-map)
     .container
       h1 Задание по&nbsp;карте &#8470;#{task}
       .map__terms
@@ -17,7 +17,7 @@ mixin map(options = {})
         if (scrollZoom)
           .map__overlay
             p Зажмите ctrl и&nbsp;крутите колёсико мыши, чтобы приблизить или отдалить карту
-        .map__container(data-map-center="49.631321, 72.863411", data-map-zoom=16, data-map-pins=pinsUrl, data-map-scrollZoom=scrollZoom, data-map-clusterize=clusterize)
+        .map__container(data-map-container, data-map-center="49.631321, 72.861411", data-map-zoom=15, data-map-pins=pinsUrl, data-map-scrollZoom=scrollZoom, data-map-clusterize=clusterize)
       if (filters.length)
         ul.map__filters(data-map-filters)
           each filter in filters

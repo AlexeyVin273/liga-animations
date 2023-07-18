@@ -1,45 +1,28 @@
 import gulp from 'gulp';
-import rename from 'gulp-rename';
 import imagemin from 'gulp-imagemin';
 import webp from 'gulp-webp';
-import svgstore from 'gulp-svgstore';
 import pngQuant from 'imagemin-pngquant';
 import mozJpeg from 'imagemin-mozjpeg';
-import svgo from 'imagemin-svgo';
+import svgo from 'gulp-svgmin';
+import {stacksvg} from 'gulp-stacksvg';
 
-const sprite = () =>
+const stack = () =>
   gulp
-      .src('source/img/sprite/*.svg')
-      .pipe(svgstore({inlineSvg: true}))
-      .pipe(rename('sprite.svg'))
+      .src('source/img/stack/*.svg')
+      .pipe(svgo())
+      .pipe(stacksvg({output: 'stack'}))
       .pipe(gulp.dest('build/img'));
 
 const optimizeSvg = () =>
   gulp
       .src('build/img/**/*.svg')
-      .pipe(
-          imagemin([
-            svgo({
-              plugins: [
-                {
-                  name: 'removeViewBox',
-                  active: false,
-                },
-                {
-                  name: 'removeRasterImages',
-                  active: true,
-                },
-                {
-                  name: 'removeUselessStrokeAndFill',
-                  active: false,
-                }],
-            })]))
+      .pipe(svgo())
       .pipe(gulp.dest('build/img'));
 
 const optimizeJpg = () =>
   gulp
       .src('build/img/**/*.{jpg,jpeg}')
-      .pipe(imagemin([mozJpeg({quality: 90, progressive: true})]))
+      .pipe(imagemin([mozJpeg({quality: 80, progressive: true})]))
       .pipe(gulp.dest('build/img'));
 
 const optimizePng = () =>
@@ -51,7 +34,7 @@ const optimizePng = () =>
               speed: 1,
               strip: true,
               dithering: 1,
-              quality: [0.8, 0.9],
+              quality: [0.7, 0.8],
             })]))
       .pipe(gulp.dest('build/img'));
 
@@ -70,8 +53,8 @@ const createWebp = () => {
   const root = '';
   return gulp
       .src(`source/img/${root}**/*.{png,jpg}`)
-      .pipe(webp({quality: 90}))
+      .pipe(webp({quality: 80}))
       .pipe(gulp.dest(`source/img/${root}`));
 };
 
-export {sprite, createWebp, optimizeSvg, optimizePng, optimizeJpg};
+export {stack, createWebp, optimizeSvg, optimizePng, optimizeJpg};
