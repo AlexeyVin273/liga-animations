@@ -172,7 +172,7 @@ export class YandexMap {
       '<div class="placemark" id=placemark-$[id]>',
       '<div class="placemark__icon">',
       '<svg aria-hidden="true">',
-      '<use xlink:href="#$[properties.icon]"></use>',
+      '<use xlink:href="img/stack.svg#$[properties.icon]"></use>',
       '</div>',
       '</div>'
     ];
@@ -220,7 +220,7 @@ export class YandexMap {
       '</div>',
       '<button class="placemark-balloon__close-btn">',
       '<svg aria-hidden="true">',
-      '<use xlink:href="#icon-close"></use>',
+      '<use xlink:href="img/stack.svg#icon-close"></use>',
       '</button>',
       '</div>'
     ];

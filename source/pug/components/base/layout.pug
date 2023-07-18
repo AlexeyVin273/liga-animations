@@ -20,7 +20,6 @@ html(lang="ru")
     link(rel="stylesheet", href="css/style.min.css")
 
   body(class={"scroll-lock-ios": preloading})
-    +sprite()
     .wrapper(class=wrapperMods)
       if (hasHeader)
         +header(headerMods, currentUrl)
