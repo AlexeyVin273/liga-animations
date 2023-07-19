@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Анимации</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="ProjectName — описание">
+    <link rel="preload" href="fonts/inter-regular.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="fonts/inter-medium.woff2" as="font" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body class="scroll-lock-ios">
+    <div class="wrapper">
+      <header class="header header--index" data-fix-block>
+        <div class="container"><span class="header__logo">
+            <svg width="362" height="67" aria-hidden="true">
+              <use xlink:href="img/stack.svg#logo"></use>
+            </svg></span>
+          <button class="header__toggle" type="button" aria-label="Переключатель отображения меню" aria-pressed="false"></button>
+        </div>
+        <nav class="main-nav" data-fix-block>
+          <div class="container">
+            <div class="main-nav__title-wrapper">
+              <h2 class="main-nav__title">Анимации</h2>
+            </div>
+            <div class="main-nav__list-wrapper">
+              <ul class="main-nav__list">
+                <li class="main-nav__item"><a class="main-nav__link" href="map-1.html">Карта 1</a>
+                </li>
+                <li class="main-nav__item"><a class="main-nav__link" href="map-2.html">Карта 2</a>
+                </li>
+                <li class="main-nav__item"><a class="main-nav__link" href="map-3.html">Карта 3</a>
+                </li>
+                <li class="main-nav__item"><a class="main-nav__link" href="map-4.html">Карта 4</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="intro data-fix-block is-hidden" data-animation="intro">
+          <div class="container">
+            <div class="intro__header">
+              <h1 class="intro__title" data-splitting>Задачки <span class="no-wrap">на&nbsp;прокачку</span></h1>
+              <p class="intro__text" data-splitting-words>Задачи <span class="no-wrap">на&nbsp;интерфейсную</span> логику, которые часто встречаются <span class="no-wrap">на&nbsp;реальных</span> проектах</p>
+            </div>
+            <ul class="intro__nav-list">
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#menu" data-move-to="#menu">Меню</a></li>
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#loader" data-move-to="#loader">Лоадер</a></li>
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#build" data-move-to="#build">Сборка первого экрана</a></li>
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#appearance" data-move-to="#appearance">Появление блоков</a></li>
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#parallax" data-move-to="#parallax">Параллакс</a></li>
+              <li class="intro__nav-item"><a class="intro__nav-link" href="#scroll-slider" data-move-to="#scroll-slider">Слайдер по скроллу</a></li>
+            </ul>
+          </div>
+          <div class="intro__bg">
+            <video width="1920" height="1080" autoplay loop playsinline muted>
+              <source src="./media/background-wave.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <section class="menu" id="menu">
+          <div class="container">
+            <div class="content-block">
+              <h2>Меню тз</h2>
+              <h3>Анимация появления</h3>
+              <p>При открытии: Сначала появляется меню, затем внутренний контент. Пункты внутри появляются с разной задержкой - эффект "лесенки"</p>
+              <p>При закрытии: Внутренний контент исчезает до закрытия меню, без задержки</p>
+              <p>Анимация меню на данном сайте реализована с помощью css (это база). Можете так же реализовать анимацию с помощью gsap</p>
+              <h3>JS</h3>
+              <p>Для блокировки скролла используется window.scrollLock</p>
+              <p>Должны быть реализованы функции или методы для открытия и закрытия меню, которые можно использовать в других модулях</p>
+            </div>
+          </div>
+        </section>
+        <section class="loader" id="loader">
+          <div class="container">
+            <div class="content-block">
+              <h2>Лоадер тз</h2>
+              <p>Анимация лоадера произвольная, можно использовать css keyframes или gsap</p>
+              <p>После загрузки страницы мы всегда находимся вверху страницы (не должно быть видно скачка)</p>
+              <p>Скролл страницы заблокирован во время загрузки</p>
+            </div>
+          </div>
+        </section>
+        <section class="build" id="build">
+          <div class="container">
+            <div class="content-block">
+              <h2>Сборка первого экрана тз</h2>
+              <p>Для анимации используйте неколько разных css свойств и небольшие задержки</p>
+              <p>Для построчной или посимвольной анимации текста используйте <a href="https://splitting.js.org/" target="_blank">splitting.js</a></p>
+            </div>
+          </div>
+        </section>
+        <section class="appearance" id="appearance">
+          <div class="container">
+            <div class="content-block">
+              <h2>Появление блоков</h2>
+              <p>доскролили и вжух!</p>
+              <p>Можно делать через классы и высчитывать по скроллу getBoundingClientRect каждого блока, но гораздо проще использовать ScrollTrigger.batch()</p>
+              <ul data-animation="appearance">
+                <li>
+                  <div class="card" data-appearance="fade">fade</div>
+                </li>
+                <li>
+                  <div class="card" data-appearance="fade">fade</div>
+                </li>
+                <li>
+                  <div class="card" data-appearance="fade-in">fade-in</div>
+                </li>
+                <li>
+                  <div class="card" data-appearance="fade-in">fade-in</div>
+                </li>
+                <li>
+                  <div class="card" data-appearance="fade-scale">fade-scale</div>
+                </li>
+                <li>
+                  <div class="card" data-appearance="fade-scale">fade-scale</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="parallax" id="parallax">
+          <div class="container">
+            <div class="content-block">
+              <h2>Параллакс по скроллу</h2>
+              <p>Эффекты, которые постоянно срабатывают по скроллу<br></p>Скроллим скроллим и вжух вжух вжух!
+              <ul data-animation="parallax">
+                <li>
+                  <div class="card" data-parallax="fade-scale">fade-scale</div>
+                </li>
+                <li>
+                  <div class="card" data-parallax="fade-scale">fade-scale</div>
+                </li>
+                <li>
+                  <div class="card" data-parallax="transform y">transform y</div>
+                </li>
+                <li>
+                  <div class="card" data-parallax="transform y">transform y</div>
+                </li>
+                <li>
+                  <div class="card" data-parallax="transform x">transform x</div>
+                </li>
+                <li>
+                  <div class="card" data-parallax="transform x">transform x</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="scroll-slider" id="scroll-slider" data-animation="scroll-slider">
+          <h2 class="visually-hidden">Скролл слайдер</h2>
+          <div class="scroll-slider__slides">
+            <div class="scroll-slider__slide" data-scroll-slider="slide">
+              <div class="container">
+                <div class="content-block">
+                  <h2>Scroll Slider</h2>
+                  <p>переключение полноэкранных слайдов по&nbsp;скроллу</p>
+                </div>
+              </div>
+              <div class="scroll-slider__slide-bg" style="background-image: url('./img/svg/architect-bg.svg')"></div>
+            </div>
+            <div class="scroll-slider__slide" data-scroll-slider="slide">
+              <div class="container">
+                <div class="content-block">
+                  <h2>position: sticky;</h2>
+                  <p>Просто стики. Не&nbsp;нужно мучаться с&nbsp;position: fixed; или pin: true,<br>(т.к. баги на&nbsp;тач неисправимы)</p>
+                </div>
+              </div>
+              <div class="scroll-slider__slide-bg" style="background-image: url('./img/svg/squares-bg.svg')"></div>
+            </div>
+            <div class="scroll-slider__slide" data-scroll-slider="slide">
+              <div class="container">
+                <div class="content-block">
+                  <h2>gsap scrollTrigger</h2>
+                  <p>без getBoundingClientRect<br>ScrollTrigger делает всю рутину за&nbsp;нас</p>
+                </div>
+              </div>
+              <div class="scroll-slider__slide-bg" style="background-image: url('./img/svg/plus-bg.svg')"></div>
+            </div>
+            <div class="scroll-slider__slide" data-scroll-slider="slide">
+              <div class="container">
+                <div class="content-block">
+                  <h2>ios friendly???</h2>
+                  <p>не&nbsp;забывайте добавлять вокруг transform: translate3d(0, 0, 0);</p>
+                </div>
+              </div>
+              <div class="scroll-slider__slide-bg" style="background-image: url('./img/svg/graph-paper-bg.svg')"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="preloader">
+      <div class="preloader__image">
+        <div class="preloader__element"></div>
+        <div class="preloader__element"></div>
+        <div class="preloader__element"></div>
+        <div class="preloader__element"></div>
+      </div>
+    </div>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>

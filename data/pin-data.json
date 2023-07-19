@@ -1,0 +1,154 @@
+{
+  "pins": [
+    {
+      "latLng": [49.629215, 72.859197],
+      "textHead": "Стадион",
+      "title": "Стадион Жигер",
+      "address": "ул. Алии Молдагуловой, 12, Абай",
+      "imagePath": "img/content/map/balloon-01.jpg",
+      "imageAlt": "Стадион Жигер г. Абай",
+      "category": "stadium",
+      "icon": "icon-stadium"
+    },
+    {
+      "latLng": [49.630896, 72.864206],
+      "textHead": "Магазин",
+      "title": "Магазин Отрар",
+      "address": "ул. Абая, 33, Абай",
+      "imagePath": "img/content/map/balloon-02.jpg",
+      "imageAlt": "Магазин Отрар г. Абай",
+      "category": "shop",
+      "icon": "icon-grocery"
+    },
+    {
+      "latLng": [49.630720, 72.853145],
+      "textHead": "Школа",
+      "title": "Школа №12",
+      "address": "Школьная ул., 12, Абай",
+      "imagePath": "img/content/map/balloon-03.jpg",
+      "imageAlt": "Школа №12 г. Абай",
+      "category": "school",
+      "icon": "icon-school"
+    },
+    {
+      "latLng": [49.629047, 72.864245],
+      "textHead": "Школа",
+      "title": "Школа № 1",
+      "address": "переулок Гагарина, 1",
+      "imagePath": "img/content/map/balloon-04.jpg",
+      "imageAlt": "Школа № 1 г. Абай",
+      "category": "school",
+      "icon": "icon-school"
+    },
+    {
+      "latLng": [49.633862, 72.868542],
+      "textHead": "Школа",
+      "title": "КГУ Школа-лицей имени Шукана Уалиханова отдела образования Абайского района",
+      "address": "улица Сакена Сейфуллина, 35А",
+      "imagePath": "img/content/map/balloon-11.jpg",
+      "imageAlt": "КГУ Школа-лицей имени Шукана Уалиханова отдела образования Абайского района",
+      "category": "school",
+      "icon": "icon-school"
+    },
+    {
+      "latLng": [49.631717, 72.875268],
+      "textHead": "Парк",
+      "title": "Парк Победы",
+      "address": "парк Победы, Абай, Карагандинская область",
+      "imagePath": "img/content/map/balloon-05.jpg",
+      "imageAlt": "Парк Победы г. Абай",
+      "category": "park",
+      "icon": "icon-park"
+    },
+    {
+      "latLng": [49.627547, 72.872742],
+      "textHead": "Магазин",
+      "title": "Фудмарт",
+      "address": "проспект Победы, 7",
+      "imagePath": "img/content/map/balloon-06.jpg",
+      "imageAlt": "Фудмарт г. Абай",
+      "category": "shop",
+      "icon": "icon-grocery"
+    },
+    {
+      "latLng": [49.632472, 72.859843],
+      "textHead": "Библиотека",
+      "title": "Центральная библиотека г. Абай",
+      "address": "улица Аль-Фараби, 35",
+      "imagePath": "img/content/map/balloon-07.jpg",
+      "imageAlt": "Центральная библиотека г. Абай",
+      "category": "library",
+      "icon": "icon-library"
+    },
+    {
+      "latLng": [49.632436, 72.853708],
+      "textHead": "Клиника",
+      "title": "Медцентр г. Абай",
+      "address": "улица 10 лет Независимости, 36",
+      "imagePath": "img/content/map/balloon-08.jpg",
+      "imageAlt": "Медцентр г. Абай",
+      "category": "hospital",
+      "icon": "icon-hospital"
+    },
+    {
+      "latLng": [49.630321, 72.858411],
+      "textHead": "Парк",
+      "title": "Парк Шахтёров",
+      "address": "парк Шахтёров, Абай, Карагандинская область",
+      "imagePath": "img/content/map/balloon-05.jpg",
+      "imageAlt": "Парк Шахтёров г. Абай",
+      "category": "park",
+      "icon": "icon-park"
+    },
+    {
+      "latLng": [49.632518, 72.859226],
+      "textHead": "Аптека",
+      "title": "Аптека №40",
+      "address": "улица Абая, 36",
+      "imagePath": "img/content/map/balloon-09.jpg",
+      "imageAlt": "Аптека №40",
+      "category": "pharmacy",
+      "icon": "icon-pharmacy"
+    },
+    {
+      "latLng": [49.631006, 72.866030],
+      "textHead": "Аптека",
+      "title": "Аптека Здоровье",
+      "address": "улица Абая, 48",
+      "imagePath": "img/content/map/balloon-09.jpg",
+      "imageAlt": "Аптека Здоровье",
+      "category": "pharmacy",
+      "icon": "icon-pharmacy"
+    },
+    {
+      "latLng": [49.631686, 72.863024],
+      "textHead": "Аптека",
+      "title": "Аптека",
+      "address": "улица Абая, 44",
+      "imagePath": "img/content/map/balloon-09.jpg",
+      "imageAlt": "Аптека",
+      "category": "pharmacy",
+      "icon": "icon-pharmacy"
+    },
+    {
+      "latLng": [49.631257, 72.859567],
+      "textHead": "Кафе и рестораны",
+      "title": "Кафе Шоколадница",
+      "address": "улица Гагарина, 4",
+      "imagePath": "img/content/map/balloon-10.jpg",
+      "imageAlt": "Кафе Шоколадница",
+      "category": "caffee",
+      "icon": "icon-caffee"
+    },
+    {
+      "latLng": [49.634376, 72.856146],
+      "textHead": "Кафе и рестораны",
+      "title": "Ресторан Бомонд",
+      "address": "улица 10 лет Независимости, 28",
+      "imagePath": "img/content/map/balloon-10.jpg",
+      "imageAlt": "Ресторан Бомонд",
+      "category": "caffee",
+      "icon": "icon-caffee"
+    }
+  ]
+}

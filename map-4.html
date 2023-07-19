@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Карта 4</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="ProjectName — описание">
+    <link rel="preload" href="fonts/inter-regular.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="fonts/inter-medium.woff2" as="font" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header bg-active" data-fix-block>
+        <div class="container"><a class="header__logo" href="index.html" aria-label="Переход на главную">
+            <svg width="362" height="67" aria-hidden="true">
+              <use xlink:href="img/stack.svg#logo"></use>
+            </svg></a>
+          <button class="header__toggle" type="button" aria-label="Переключатель отображения меню" aria-pressed="false"></button>
+        </div>
+        <nav class="main-nav" data-fix-block>
+          <div class="container">
+            <div class="main-nav__title-wrapper">
+              <h2 class="main-nav__title">Анимации</h2>
+            </div>
+            <div class="main-nav__list-wrapper">
+              <ul class="main-nav__list">
+                <li class="main-nav__item"><a class="main-nav__link" href="map-1.html">Карта 1</a>
+                </li>
+                <li class="main-nav__item"><a class="main-nav__link" href="map-2.html">Карта 2</a>
+                </li>
+                <li class="main-nav__item"><a class="main-nav__link" href="map-3.html">Карта 3</a>
+                </li>
+                <li class="main-nav__item is-active"><span class="main-nav__link">Карта 4</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <section class="map" data-map>
+          <div class="container">
+            <h1>Задание по&nbsp;карте &#8470;4</h1>
+            <div class="map__terms">
+              <h2>Техническое задание</h2>
+              <p>Реализовать карту через API Яндекс карт</p>
+              <p>Настроить кастомный пин на&nbsp;карте так, что&nbsp;бы его стрелочка четко указывала на&nbsp;центр координат, которые вы&nbsp;можете придумать сами</p>
+              <p>На&nbsp;десктопной версии при скролле колесиком мышки, карта не&nbsp;должна масштабироваться. Масштабировать ее&nbsp;можно только при нажатии клавиши Ctrl + колесико мышки. Если пользователь навел курсор на&nbsp;карту и&nbsp;начинает скролить мышкой, то&nbsp;на&nbsp;карте должен появиться overlay с&nbsp;инструкцией, что для того что&nbsp;бы масштабировать карту нажмите Ctrl + колесико мышки</p>
+              <p>Создать и&nbsp;расположить пины на&nbsp;карте из&nbsp;json файла. При клике на&nbsp;каждый пин выводить какую нибудь информацию в&nbsp;небольшом всплывающем окошке, которое будет появляться над пином</p>
+              <p>Реализовать кластеризацию меток. Если зум карты становится меньше, то&nbsp;пины должны собираться в&nbsp;один кластер</p>
+              <p>При клике на&nbsp;кластер должно раскрываться окошко, в&nbsp;котором будет списком указаны, какие пини находятся в&nbsp;этой кластере</p>
+            </div>
+            <div class="map__wrapper">
+              <div class="map__overlay">
+                <p>Зажмите ctrl и&nbsp;крутите колёсико мыши, чтобы приблизить или отдалить карту</p>
+              </div>
+              <div class="map__container" data-map-container data-map-center="49.631321, 72.861411" data-map-zoom="15" data-map-pins="data/pin-data.json" data-map-scrollZoom data-map-clusterize></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>
