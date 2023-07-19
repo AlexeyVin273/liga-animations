@@ -97,9 +97,9 @@ export class YandexMap {
       balloonContent: 'Здесь живёт кот Василий. Я обитаю по соседству.',
     }, {
       iconLayout: 'default#image',
-      iconImageHref: '../img/svg/pin.svg',
-      iconImageSize: [55, 74],
-      iconImageOffset: [-30, -74],
+      iconImageHref: 'img/svg/pin.svg',
+      iconImageSize: [60, 80],
+      iconImageOffset: [-30, -80],
     });
 
     this._yandexMap.geoObjects.add(placemark);
